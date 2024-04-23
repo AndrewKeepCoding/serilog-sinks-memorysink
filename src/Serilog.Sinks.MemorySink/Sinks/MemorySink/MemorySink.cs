@@ -82,7 +82,7 @@ internal sealed class MemorySink<T>(MemorySinkOptions<T> options) : ILogEventSin
 
     public async Task ClearLogs(CancellationToken cancellationToken = default)
     {
-        if (LogCollection.Count > 0)
+        if (LogCollection.Count <= 0)
         {
             return;
         }

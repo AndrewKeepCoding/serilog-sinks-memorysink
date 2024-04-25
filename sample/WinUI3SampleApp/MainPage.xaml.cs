@@ -14,8 +14,8 @@ public sealed partial class MainPage : Page
 {
     public MainPage()
     {
-        this.InitializeComponent();
-        this.MinimumLevelComboBox.SelectedItem = LogEventLevel.Information;
+        InitializeComponent();
+        MinimumLevelComboBox.SelectedItem = LogEventLevel.Information;
     }
 
     public LogEventLevel[] LogEventLevels { get; } = Enum.GetValues<LogEventLevel>();
@@ -92,5 +92,11 @@ public sealed partial class MainPage : Page
         }
 
         App.LoggingLevelSwitch.MinimumLevel = selectedLogLevel;
+    }
+
+    private async void ClearLogsButton_Click(object sender, RoutedEventArgs e)
+    {
+        LogEvents.Clear();
+        await App.LogSource.ClearLogs();
     }
 }

@@ -26,7 +26,7 @@ public partial class MainPageViewModel : ObservableObject
         await Task.WhenAll(tasks);
     }
 
-    private async Task KeepLogging(TimeSpan interval, CancellationToken cancellationToken)
+    private static async Task KeepLogging(TimeSpan interval, CancellationToken cancellationToken)
     {
         int threadId = Environment.CurrentManagedThreadId;
 

@@ -6,7 +6,7 @@ public class NullLogSource<T> : ILogSource<T>
 
     public int GetLogsCount() => 0;
 
-    public Task<IEnumerable<T>> GetLogs(int start, int count = int.MaxValue, CancellationToken cancellationToken = default) => Task.FromResult<IEnumerable<T>>([]);
+    public Task<IEnumerable<T>> GetLogs(int start, int requiredCount = int.MaxValue, CancellationToken cancellationToken = default) => Task.FromResult<IEnumerable<T>>([]);
 
     public Task ClearLogs(CancellationToken cancellationToken = default) => Task.CompletedTask;
 }

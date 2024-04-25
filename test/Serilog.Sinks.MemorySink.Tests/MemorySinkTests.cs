@@ -10,25 +10,25 @@ public class MemorySinkTests
         ProcessingInterval = TimeSpan.FromMilliseconds(10)
     };
 
-    public record GetLogsTestItem(IEnumerable<LogEvent> Input, int Start, int Count, bool ClearLogsFirst, IEnumerable<LogEvent> ExpectedOutput);
+    public record GetLogsTestItem(IEnumerable<LogEvent> Input, int Start, int RequiredCount, bool ClearLogsFirst, IEnumerable<LogEvent> ExpectedOutput);
 
     public static IEnumerable<LogEvent> TestLogEvents { get; } = LogEventHelper.LogEvents(10, LogEventLevel.Information);
 
     public static IEnumerable<object[]> GetLogsTestItems { get; } =
     [
-        [new GetLogsTestItem(TestLogEvents.Take(1), Start: 0, Count: 0, ClearLogsFirst: false, TestLogEvents.Take(0))],
-        [new GetLogsTestItem(TestLogEvents.Take(1), Start: 0, Count: 1, ClearLogsFirst: false, TestLogEvents.Take(1))],
-        [new GetLogsTestItem(TestLogEvents.Take(1), Start: 0, Count: 2, ClearLogsFirst: false, TestLogEvents.Take(1))],
-        [new GetLogsTestItem(TestLogEvents.Take(1), Start: 1, Count: 1, ClearLogsFirst: false, TestLogEvents.Take(0))],
+        [new GetLogsTestItem(TestLogEvents.Take(1), Start: 0, RequiredCount: 0, ClearLogsFirst: false, TestLogEvents.Take(0))],
+        [new GetLogsTestItem(TestLogEvents.Take(1), Start: 0, RequiredCount: 1, ClearLogsFirst: false, TestLogEvents.Take(1))],
+        [new GetLogsTestItem(TestLogEvents.Take(1), Start: 0, RequiredCount: 2, ClearLogsFirst: false, TestLogEvents.Take(1))],
+        [new GetLogsTestItem(TestLogEvents.Take(1), Start: 1, RequiredCount: 1, ClearLogsFirst: false, TestLogEvents.Take(0))],
 
-        [new GetLogsTestItem(TestLogEvents.Take(2), Start: 0, Count: 1, ClearLogsFirst: false, TestLogEvents.Take(1))],
-        [new GetLogsTestItem(TestLogEvents.Take(2), Start: 0, Count: 2, ClearLogsFirst: false, TestLogEvents.Take(2))],
-        [new GetLogsTestItem(TestLogEvents.Take(2), Start: 0, Count: 3, ClearLogsFirst: false, TestLogEvents.Take(2))],
-        [new GetLogsTestItem(TestLogEvents.Take(2), Start: 1, Count: 1, ClearLogsFirst: false, TestLogEvents.Skip(1).Take(1)) ],
-        [new GetLogsTestItem(TestLogEvents.Take(2), Start: 1, Count: 2, ClearLogsFirst: false, TestLogEvents.Skip(1).Take(1))],
+        [new GetLogsTestItem(TestLogEvents.Take(2), Start: 0, RequiredCount: 1, ClearLogsFirst: false, TestLogEvents.Take(1))],
+        [new GetLogsTestItem(TestLogEvents.Take(2), Start: 0, RequiredCount: 2, ClearLogsFirst: false, TestLogEvents.Take(2))],
+        [new GetLogsTestItem(TestLogEvents.Take(2), Start: 0, RequiredCount: 3, ClearLogsFirst: false, TestLogEvents.Take(2))],
+        [new GetLogsTestItem(TestLogEvents.Take(2), Start: 1, RequiredCount: 1, ClearLogsFirst: false, TestLogEvents.Skip(1).Take(1)) ],
+        [new GetLogsTestItem(TestLogEvents.Take(2), Start: 1, RequiredCount: 2, ClearLogsFirst: false, TestLogEvents.Skip(1).Take(1))],
 
-        [new GetLogsTestItem(TestLogEvents.Take(1), Start: 0, Count: 1, ClearLogsFirst: true, TestLogEvents.Take(0))],
-        [new GetLogsTestItem(TestLogEvents.Take(2), Start: 0, Count: 1, ClearLogsFirst: true, TestLogEvents.Take(0))],
+        [new GetLogsTestItem(TestLogEvents.Take(1), Start: 0, RequiredCount: 1, ClearLogsFirst: true, TestLogEvents.Take(0))],
+        [new GetLogsTestItem(TestLogEvents.Take(2), Start: 0, RequiredCount: 1, ClearLogsFirst: true, TestLogEvents.Take(0))],
     ];
 
     [Fact]
@@ -89,7 +89,7 @@ public class MemorySinkTests
             await sut.ClearLogs();
         }
 
-        var logs = await sut.GetLogs(item.Start, item.Count);
+        var logs = await sut.GetLogs(item.Start, item.RequiredCount);
 
         // Assert
         logs.Should().BeEquivalentTo(item.ExpectedOutput);

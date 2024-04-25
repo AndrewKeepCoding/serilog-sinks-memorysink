@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34804.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serilog.Sinks.MemorySink", "src\Serilog.Sinks.MemorySink\Serilog.Sinks.MemorySink.csproj", "{EB04A371-870E-4C3A-8A66-75CF039E9D72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.MemorySink", "src\Serilog.Sinks.MemorySink\Serilog.Sinks.MemorySink.csproj", "{EB04A371-870E-4C3A-8A66-75CF039E9D72}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4FE3B581-DC9F-40EF-92DE-71923DC75568}"
 EndProject
@@ -16,7 +16,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sln", "sln", "{683F0AFA-BD8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5FD99A18-EB31-40A7-A7FE-EA87D944D74B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUI3SampleApp", "sample\WinUI3SampleApp\WinUI3SampleApp.csproj", "{98A65F04-2B8A-4386-A019-C3E8A1986B34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUI3SampleApp", "sample\WinUI3SampleApp\WinUI3SampleApp.csproj", "{98A65F04-2B8A-4386-A019-C3E8A1986B34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serilog.Sinks.MemorySink.Tests", "test\Serilog.Sinks.MemorySink.Tests\Serilog.Sinks.MemorySink.Tests.csproj", "{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +72,22 @@ Global
 		{98A65F04-2B8A-4386-A019-C3E8A1986B34}.Release|x86.ActiveCfg = Release|x86
 		{98A65F04-2B8A-4386-A019-C3E8A1986B34}.Release|x86.Build.0 = Release|x86
 		{98A65F04-2B8A-4386-A019-C3E8A1986B34}.Release|x86.Deploy.0 = Release|x86
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Debug|x64.Build.0 = Debug|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Debug|x86.Build.0 = Debug|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Release|ARM64.Build.0 = Release|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Release|x64.ActiveCfg = Release|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Release|x64.Build.0 = Release|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Release|x86.ActiveCfg = Release|Any CPU
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +95,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EB04A371-870E-4C3A-8A66-75CF039E9D72} = {4FE3B581-DC9F-40EF-92DE-71923DC75568}
 		{98A65F04-2B8A-4386-A019-C3E8A1986B34} = {901BB8C4-A47B-4730-96F9-25DEA0F3C255}
+		{CCE60EE9-7720-43D6-8C11-BB4CD1E04160} = {5FD99A18-EB31-40A7-A7FE-EA87D944D74B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D0B22EFC-34DB-4287-B528-1CEFC4458331}

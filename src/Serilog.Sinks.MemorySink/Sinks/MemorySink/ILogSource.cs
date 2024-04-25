@@ -6,7 +6,7 @@ public interface ILogSource<T>
 
     int GetLogsCount();
 
-    Task<IEnumerable<T>> GetLogs(int start, int count = int.MaxValue, CancellationToken cancellationToken = default);
+    Task<IEnumerable<T>> GetLogs(int start, int requiredCount = int.MaxValue, CancellationToken cancellationToken = default);
 
     Task ClearLogs(CancellationToken cancellationToken = default);
 }

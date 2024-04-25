@@ -24,7 +24,7 @@ Log.Logger = new LoggerConfiguration()
 Retrieve logs:
 
 ```cs
-var logs = await logSource.GetLogs(startIndex, count, cancellationToken);
+var logs = await logSource.GetLogs(startIndex, requiredCount, cancellationToken);
 ```
 
 ⚙️**Custom log item, options and exception handling**

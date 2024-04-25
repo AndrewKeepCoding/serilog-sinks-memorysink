@@ -21,8 +21,6 @@ internal sealed class MemorySink<T>(MemorySinkOptions<T> options) : ILogEventSin
 
     private List<T> LogCollection { get; } = [];
 
-    private Queue<T> LogQueue { get; } = new();
-
     private int LogCollectionFirstElementIndex { get; set; } = 0;
 
     public void Emit(LogEvent logEvent)
@@ -36,8 +34,7 @@ internal sealed class MemorySink<T>(MemorySinkOptions<T> options) : ILogEventSin
     public void Initialize()
     {
         CancellationTokenSource = new CancellationTokenSource();
-        CancellationToken cancellationToken = CancellationTokenSource.Token;
-        UpdatingTask = ProcessLogs(cancellationToken);
+        UpdatingTask = ProcessLogs(CancellationTokenSource.Token);
         UpdatingTask.SafeFireAndForget(_options.OnException);
     }
 
@@ -46,7 +43,7 @@ internal sealed class MemorySink<T>(MemorySinkOptions<T> options) : ILogEventSin
         return LogCollection.Count;
     }
 
-    public async Task<IEnumerable<T>> GetLogs(int start = 0, int count = int.MaxValue, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<T>> GetLogs(int start = 0, int requiredCount = int.MaxValue, CancellationToken cancellationToken = default)
     {
         if (LogCollection.Count is 0)
         {
@@ -65,7 +62,7 @@ internal sealed class MemorySink<T>(MemorySinkOptions<T> options) : ILogEventSin
 
             return LogCollection
                 .Skip(startIndex)
-                .Take(count)
+                .Take(requiredCount)
                 .ToList();
         }
         finally
@@ -169,7 +166,7 @@ internal sealed class MemorySink<T>(MemorySinkOptions<T> options) : ILogEventSin
     {
         try
         {
-            if (logEvents.Any() is false)
+            if (logEvents.Count <= 0)
             {
                 return;
             }

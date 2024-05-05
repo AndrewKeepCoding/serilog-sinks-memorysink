@@ -70,7 +70,7 @@ public sealed partial class MainPage : Page
                 if (AutoScrollToggleSwitch.IsOn is true &&
                     LogEvents.LastOrDefault() is { } logEvent)
                 {
-                    LogEventsListView.ScrollIntoView(logEvent);
+                    LogEventsTableView.ScrollIntoView(logEvent);
                 }
             }
         }

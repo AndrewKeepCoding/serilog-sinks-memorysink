@@ -6,181 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:WinUI3SampleApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:table="using:WinUI.TableView"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
     <Page.Resources>
-        <Style
+        <Style 
             BasedOn="{StaticResource DefaultToggleButtonStyle}"
-            TargetType="ToggleButton">
+               TargetType="ToggleButton">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
         </Style>
-
-        <GridLength x:Key="TimestampColumnGridLength">210</GridLength>
-        <GridLength x:Key="LogLevelColumnGridLength">90</GridLength>
-        <x:Double x:Key="MessageColumnMinWidth">500</x:Double>
-
+        
         <local:TrueToVisibleConverter x:Key="TrueToVisibleConverter" />
-
-        <local:LogItemDataTemplateSelector x:Key="LogItemDataTemplateSelector">
-            <local:LogItemDataTemplateSelector.VerboseTemplate>
-                <DataTemplate x:DataType="local:LogItem">
-                    <Grid>
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="LightGray" />
-                            </Style>
-                        </Grid.Resources>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource TimestampColumnGridLength}" />
-                            <ColumnDefinition Width="{StaticResource LogLevelColumnGridLength}" />
-                            <ColumnDefinition
-                                Width="*"
-                                MinWidth="{StaticResource MessageColumnMinWidth}" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="{x:Bind Timestamp}" />
-                        <TextBlock
-                            Grid.Column="1"
-                            Text="{x:Bind Level}" />
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="{x:Bind Message}" />
-                    </Grid>
-                </DataTemplate>
-            </local:LogItemDataTemplateSelector.VerboseTemplate>
-            <local:LogItemDataTemplateSelector.DebugTemplate>
-                <DataTemplate x:DataType="local:LogItem">
-                    <Grid>
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="Gray" />
-                            </Style>
-                        </Grid.Resources>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource TimestampColumnGridLength}" />
-                            <ColumnDefinition Width="{StaticResource LogLevelColumnGridLength}" />
-                            <ColumnDefinition
-                                Width="*"
-                                MinWidth="{StaticResource MessageColumnMinWidth}" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="{x:Bind Timestamp}" />
-                        <TextBlock
-                            Grid.Column="1"
-                            Text="{x:Bind Level}" />
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="{x:Bind Message}" />
-                    </Grid>
-                </DataTemplate>
-            </local:LogItemDataTemplateSelector.DebugTemplate>
-            <local:LogItemDataTemplateSelector.InformationTemplate>
-                <DataTemplate x:DataType="local:LogItem">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource TimestampColumnGridLength}" />
-                            <ColumnDefinition Width="{StaticResource LogLevelColumnGridLength}" />
-                            <ColumnDefinition
-                                Width="*"
-                                MinWidth="{StaticResource MessageColumnMinWidth}" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="{x:Bind Timestamp}" />
-                        <TextBlock
-                            Grid.Column="1"
-                            Text="{x:Bind Level}" />
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="{x:Bind Message}" />
-                    </Grid>
-                </DataTemplate>
-            </local:LogItemDataTemplateSelector.InformationTemplate>
-            <local:LogItemDataTemplateSelector.WarningTemplate>
-                <DataTemplate x:DataType="local:LogItem">
-                    <Grid>
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="Yellow" />
-                            </Style>
-                        </Grid.Resources>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource TimestampColumnGridLength}" />
-                            <ColumnDefinition Width="{StaticResource LogLevelColumnGridLength}" />
-                            <ColumnDefinition
-                                Width="*"
-                                MinWidth="{StaticResource MessageColumnMinWidth}" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="{x:Bind Timestamp}" />
-                        <TextBlock
-                            Grid.Column="1"
-                            Text="{x:Bind Level}" />
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="{x:Bind Message}" />
-                    </Grid>
-                </DataTemplate>
-            </local:LogItemDataTemplateSelector.WarningTemplate>
-            <local:LogItemDataTemplateSelector.ErrorTemplate>
-                <DataTemplate x:DataType="local:LogItem">
-                    <Grid>
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="HotPink" />
-                            </Style>
-                        </Grid.Resources>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource TimestampColumnGridLength}" />
-                            <ColumnDefinition Width="{StaticResource LogLevelColumnGridLength}" />
-                            <ColumnDefinition
-                                Width="*"
-                                MinWidth="{StaticResource MessageColumnMinWidth}" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="{x:Bind Timestamp}" />
-                        <TextBlock
-                            Grid.Column="1"
-                            Text="{x:Bind Level}" />
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="{x:Bind Message}" />
-                    </Grid>
-                </DataTemplate>
-            </local:LogItemDataTemplateSelector.ErrorTemplate>
-            <local:LogItemDataTemplateSelector.FatalTemplate>
-                <DataTemplate x:DataType="local:LogItem">
-                    <Grid>
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="Red" />
-                            </Style>
-                        </Grid.Resources>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource TimestampColumnGridLength}" />
-                            <ColumnDefinition Width="{StaticResource LogLevelColumnGridLength}" />
-                            <ColumnDefinition
-                                Width="*"
-                                MinWidth="{StaticResource MessageColumnMinWidth}" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="{x:Bind Timestamp}" />
-                        <TextBlock
-                            Grid.Column="1"
-                            Text="{x:Bind Level}" />
-                        <TextBlock
-                            Grid.Column="2"
-                            Text="{x:Bind Message}" />
-                    </Grid>
-                </DataTemplate>
-            </local:LogItemDataTemplateSelector.FatalTemplate>
-        </local:LogItemDataTemplateSelector>
+        <local:LogEventLevelToBrushConverter x:Key="LogEventLevelToBrushConverter" />
     </Page.Resources>
 
     <Grid
@@ -247,59 +85,46 @@
         </StackPanel>
 
         <!--  LogViewer  -->
-        <Grid
-            Grid.Column="1"
-            BorderBrush="{ThemeResource ControlElevationBorderBrush}"
-            BorderThickness="1"
-            CornerRadius="{ThemeResource ControlCornerRadius}"
-            RowDefinitions="Auto,*">
-            <Grid Grid.Row="0">
-                <Grid.Resources>
-                    <Style
-                        BasedOn="{StaticResource DefaultButtonStyle}"
-                        TargetType="Button">
-                        <Setter Property="HorizontalAlignment" Value="Stretch" />
-                        <Setter Property="HorizontalContentAlignment" Value="Left" />
-                    </Style>
-                </Grid.Resources>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10" />
-                    <ColumnDefinition Width="{StaticResource TimestampColumnGridLength}" />
-                    <ColumnDefinition Width="{StaticResource LogLevelColumnGridLength}" />
-                    <ColumnDefinition
-                        Width="*"
-                        MinWidth="{StaticResource MessageColumnMinWidth}" />
-                    <ColumnDefinition Width="10" />
-                </Grid.ColumnDefinitions>
-                <Button
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    BorderThickness="0,0,1,1"
-                    Content="Timestamp"
-                    CornerRadius="4,0,0,0" />
-                <Button
-                    Grid.Column="2"
-                    BorderThickness="0,0,1,1"
-                    Content="Level"
-                    CornerRadius="0,0,0,0" />
-                <Button
-                    Grid.Column="3"
-                    Grid.ColumnSpan="2"
-                    BorderThickness="0,0,1,1"
-                    Content="Message"
-                    CornerRadius="0,4,0,0" />
-            </Grid>
-            <ListView
-                x:Name="LogEventsListView"
-                Grid.Row="1"
-                ItemTemplateSelector="{StaticResource LogItemDataTemplateSelector}"
-                ItemsSource="{x:Bind LogEvents, Mode=OneWay}"
-                Visibility="{x:Bind LogViewerVisibilityToggleSwitch.IsOn, Mode=OneWay, Converter={StaticResource TrueToVisibleConverter}}">
-                <ListView.ItemContainerTransitions>
-                    <TransitionCollection />
-                </ListView.ItemContainerTransitions>
-            </ListView>
-        </Grid>
+        <table:TableView x:Name="LogEventsTableView"
+                         Grid.Column="1"
+                         HeaderRowHeight="32"
+                         ShowOptionsButton="False"
+                         AutoGenerateColumns="False"
+                         ItemsSource="{x:Bind LogEvents}"
+                         Visibility="{x:Bind LogViewerVisibilityToggleSwitch.IsOn, Mode=OneWay, Converter={StaticResource TrueToVisibleConverter}}">
+            <ListView.ItemContainerTransitions>
+                <TransitionCollection />
+            </ListView.ItemContainerTransitions>
+            <table:TableView.Columns>
+                <table:TableViewTemplateColumn Header="Timestamp"
+                                               Width="210">
+                    <table:TableViewTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Timestamp}"
+                                       Foreground="{Binding Level, Converter={StaticResource LogEventLevelToBrushConverter} }" />
+                        </DataTemplate>
+                    </table:TableViewTemplateColumn.CellTemplate>
+                </table:TableViewTemplateColumn>
+                <table:TableViewTemplateColumn Header="Level"
+                                               Width="90">
+                    <table:TableViewTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Level}"
+                                       Foreground="{Binding Level, Converter={StaticResource LogEventLevelToBrushConverter} }" />
+                        </DataTemplate>
+                    </table:TableViewTemplateColumn.CellTemplate>
+                </table:TableViewTemplateColumn>
+                <table:TableViewTemplateColumn Header="Message"
+                                               Width="600">
+                    <table:TableViewTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Message}"
+                                       Foreground="{Binding Level, Converter={StaticResource LogEventLevelToBrushConverter} }" />
+                        </DataTemplate>
+                    </table:TableViewTemplateColumn.CellTemplate>
+                </table:TableViewTemplateColumn>
+            </table:TableView.Columns>
+        </table:TableView>
     </Grid>
 
 </Page>

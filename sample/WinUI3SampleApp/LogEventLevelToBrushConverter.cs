@@ -17,7 +17,7 @@ public class LogEventLevelToBrushConverter : IValueConverter
             LogEventLevel.Warning => new SolidColorBrush(Colors.Yellow),
             LogEventLevel.Error => new SolidColorBrush(Colors.HotPink),
             LogEventLevel.Fatal => new SolidColorBrush(Colors.Red),
-            LogEventLevel.Information or _ => value,
+            LogEventLevel.Information or _ => null!,
         };
     }
 

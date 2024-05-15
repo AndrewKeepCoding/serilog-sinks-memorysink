@@ -8,7 +8,7 @@ namespace WinUI3SampleApp;
 
 public class LogEventLevelToBrushConverter : IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, string language)
+    public object? Convert(object value, Type targetType, object parameter, string language)
     {
         return (LogEventLevel)value switch
         {
@@ -17,7 +17,7 @@ public class LogEventLevelToBrushConverter : IValueConverter
             LogEventLevel.Warning => new SolidColorBrush(Colors.Yellow),
             LogEventLevel.Error => new SolidColorBrush(Colors.HotPink),
             LogEventLevel.Fatal => new SolidColorBrush(Colors.Red),
-            LogEventLevel.Information or _ => null!,
+            LogEventLevel.Information or _ => null,
         };
     }
 
